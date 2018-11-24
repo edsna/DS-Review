@@ -1,19 +1,19 @@
 public class Arrays{
-	//Cann only store values of the same datatype
-
-	
 	//Main
 	public static void main(String[] args){
-		//creates a new integer array
-		int myArray[] = new int [10];
-		myArray[0] = 10;
-		myArray[1] = 10;
-		myArray[2] = 10;
-		myArray[3] = 10;
-		myArray[4] = 10;
-		myArray[5] = 10;
-		myArray[6] = 10;
-		myArray[7] = 10;
-		System.out.println(myArray[9]);	//Prints 1 array element
+		int myArray[] = {10, 20, 30, 40, 50};	//creates a new integer array
+		Array(myArray);	//Name on function call does not have to be the same as on method declaration
+		for(int i : myArray){
+			System.out.println(i);
+		}
 	}
+
+	//Cann only store values of the same datatype
+	//Arrays in methods
+	public static void Array(int a[]){	//Methods takes an Arr as input
+		for(int  j = 0; j < a.length; j++){	//loops through it
+			a[j] += 5;			//Adds 5 to each element of the Arr
+		}
+	}
+	
 }
