@@ -1,0 +1,24 @@
+/*
+ * @author: Edson Zandamela
+ * This file contains notes on bog O notation
+*/
+
+/*Based om the example from Crack the code interview where a company compared  * the speed of a pigeon sending information b etween two offices using a share  * drive VS their SP (Internet Service Provider)
+*/
+O(1)"Constant time with respect to the size of the input" >> It doesn't matter the size of the USB the Pigeon will take(1, 2, 5, 10 or 100GB) the pigeon will always tranfer data at about the same amount of time "its never going to take longer because the usb contains a large storage " whereas the internet time of transfer - will scale lineary with respect to the  amount of data we wish to transfer (twice as much the amount of data, will result in twice as much the amount of time) << this is what we call Big O(n). It Describes how time scales with respect to some input variables.
+
+//4 Important Rules
+1-DIFFERENT STEPS GET ADDED >> If you have two or more different steps in your algorithm, you add them to find the RunTime
+Eg: You have to loop through an array then all the way backwards then you just add their runtime
+
+2-YOU ALWAYS DROP CONSTANTS >> because you're looking to find weather things scale linearly/ in a quadratic form/... so constants dont make any change
+
+3-IF YOUR INPUTS ARE DIFFERENT THEN, USE DIFFERENT VARIABLES TO REPRESENT THEM
+>>Seeing a nested loop is not enough to argue O(N^2) in some cases nothing tells us that A and B are the same length so we can argue that N equals to the same length of A abd B therefore, each A and B have their own length so we cannot argue that N equals to the depth of both A & B so their running time is O(A*B)
+
+4-DROP NON - DOMINANT TERMS.
+
+
+For more examples visit:
+https://www.youtube.com/watch?v=v4cd1O4zkGw&list=PLX6IKgS15Ue02WDPRCmYKuZicQHit9kFt
+ 
