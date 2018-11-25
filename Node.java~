@@ -1,0 +1,75 @@
+/*
+* @author Edson Zandamela
+*/
+//BT >> each node has no more than 2 childs
+//BST >> Left node < all right nodes
+//Finding nodes is fast(compare x with rootNode then take right path to find it)
+//Inserts >> cmp with root (if > go right; if < go left...till null-add)
+//Traversing: inorder(LRoRi)"allows print in order" preorder(RLR), postorder(LRiRo)
+
+//IMPLEMENTATION of BST
+public class Node{
+		Node left, right;
+		int data;
+		//Constructor
+		public Node(int data){
+			this.data = data;
+		}
+
+		//Methods
+		/*
+		* Inserts data into tree
+		*/
+		public void insert(int value){
+			if(value <= data){		//if <= current data
+				if(left == null){	//Or if no leftNode yet
+					left = new Node(value);
+				}else{
+					left.insert(value);
+				}	
+			}else{
+				if(right == null){
+				right = new Node(value);
+			}else{
+				right.insert(value);
+				}
+			}
+		}
+		/*
+		* Return true or false if node value is in the tree 
+		*/
+		public boolean contains(int value){
+			if(value == data){		//check if is same as data
+				return true;
+			}else if(value < data){		//check if its less
+				if(left == null){	//if no leftNode
+					return false;
+				}else{			//If there is some leftNode
+				return left.contains(value);
+
+				}
+			}else{
+				if(right == null){
+				return false;
+				}else{
+					return right.contains(value);
+				}
+			}
+		}
+	/*
+	*Prints inOrder Traversal
+	*/
+
+	public void printInOrder(){
+		if(left != null){
+			left.printInOrder();
+		}
+		System.out.println(data);
+		if(right != null){
+		}
+	}
+	
+	public static void main(String[]args){
+
+	}
+}
