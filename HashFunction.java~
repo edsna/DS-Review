@@ -1,0 +1,406 @@
+import java.util.Arrays;
+002
+ 
+003
+// If we think of a Hash Table as an array
+004
+// then a hash function is used to generate
+005
+// a unique key for every item in the array.
+006
+// The position the item goes in is known
+007
+// as the slot. Hashing doesn't work very well
+008
+// in situations in which duplicate data
+009
+// is stored. Also it isn't good for searching
+010
+// for anything except a specific key.
+011
+// However a Hash Table is a data structure that
+012
+// offers fast insertion and searching capabilities.
+013
+ 
+014
+public class HashFunction {
+015
+ 
+016
+    String[] theArray;
+017
+    int arraySize;
+018
+    int itemsInArray = 0;
+019
+ 
+020
+    public static void main(String[] args) {
+021
+ 
+022
+        HashFunction theFunc = new HashFunction(30);
+023
+ 
+024
+        // Simplest Hash Function
+025
+ 
+026
+        // String[] elementsToAdd = { "1", "5", "17", "21", "26" };
+027
+ 
+028
+        // theFunc.hashFunction1(elementsToAdd, theFunc.theArray);
+029
+ 
+030
+        // Mod Hash Function
+031
+        // This contains exactly 30 items to show how collisions
+032
+        // will work
+033
+ 
+034
+        String[] elementsToAdd2 = { "100", "510", "170", "214", "268", "398",
+035
+                "235", "802", "900", "723", "699", "1", "16", "999", "890",
+036
+                "725", "998", "978", "988", "990", "989", "984", "320", "321",
+037
+                "400", "415", "450", "50", "660", "624" };
+038
+ 
+039
+        theFunc.hashFunction2(elementsToAdd2, theFunc.theArray);
+040
+ 
+041
+        // Locate the value 660 in the Hash Table
+042
+ 
+043
+        theFunc.findKey("660");
+044
+ 
+045
+        theFunc.displayTheStack();
+046
+ 
+047
+    }
+048
+ 
+049
+    // Simple Hash Function that puts values in the same
+050
+    // index that matches their value
+051
+ 
+052
+    public void hashFunction1(String[] stringsForArray, String[] theArray) {
+053
+ 
+054
+        for (int n = 0; n < stringsForArray.length; n++) {
+055
+ 
+056
+            String newElementVal = stringsForArray[n];
+057
+ 
+058
+            theArray[Integer.parseInt(newElementVal)] = newElementVal;
+059
+ 
+060
+        }
+061
+ 
+062
+    }
+063
+ 
+064
+    // Now let's say we have to hold values between 0 & 999
+065
+    // but we never plan to have more than 15 values in all.
+066
+    // It wouldn't make sense to make a 1000 item array, so
+067
+    // what can we do?
+068
+ 
+069
+    // One way to fit these numbers into a 30 item array is
+070
+    // to use the mod function. All you do is take the modulus
+071
+    // of the value versus the array size
+072
+ 
+073
+    // The goal is to make the array big enough to avoid
+074
+    // collisions, but not so big that we waste memory
+075
+ 
+076
+    public void hashFunction2(String[] stringsForArray, String[] theArray) {
+077
+ 
+078
+        for (int n = 0; n < stringsForArray.length; n++) {
+079
+ 
+080
+            String newElementVal = stringsForArray[n];
+081
+ 
+082
+            // Create an index to store the value in by taking
+083
+            // the modulus
+084
+ 
+085
+            int arrayIndex = Integer.parseInt(newElementVal) % 29;
+086
+ 
+087
+            System.out.println("Modulus Index= " + arrayIndex + " for value "
+088
+                    + newElementVal);
+089
+ 
+090
+            // Cycle through the array until we find an empty space
+091
+ 
+092
+            while (theArray[arrayIndex] != "-1") {
+093
+ 
+094
+                ++arrayIndex;
+095
+ 
+096
+                System.out.println("Collision Try " + arrayIndex + " Instead");
+097
+ 
+098
+                // If we get to the end of the array go back to index 0
+099
+ 
+100
+                arrayIndex %= arraySize;
+101
+ 
+102
+            }
+103
+ 
+104
+            theArray[arrayIndex] = newElementVal;
+105
+ 
+106
+        }
+107
+ 
+108
+    }
+109
+ 
+110
+    // Returns the value stored in the Hash Table
+111
+ 
+112
+    public String findKey(String key) {
+113
+ 
+114
+        // Find the keys original hash key
+115
+        int arrayIndexHash = Integer.parseInt(key) % 29;
+116
+ 
+117
+        while (theArray[arrayIndexHash] != "-1") {
+118
+ 
+119
+            if (theArray[arrayIndexHash] == key) {
+120
+ 
+121
+                // Found the key so return it
+122
+                System.out.println(key + " was found in index "
+123
+                        + arrayIndexHash);
+124
+ 
+125
+                return theArray[arrayIndexHash];
+126
+ 
+127
+            }
+128
+ 
+129
+            // Look in the next index
+130
+ 
+131
+            ++arrayIndexHash;
+132
+ 
+133
+            // If we get to the end of the array go back to index 0
+134
+ 
+135
+            arrayIndexHash %= arraySize;
+136
+ 
+137
+        }
+138
+ 
+139
+        // Couldn't locate the key
+140
+ 
+141
+        return null;
+142
+ 
+143
+    }
+144
+ 
+145
+    HashFunction(int size) {
+146
+ 
+147
+        arraySize = size;
+148
+ 
+149
+        theArray = new String[size];
+150
+ 
+151
+        Arrays.fill(theArray, "-1");
+152
+ 
+153
+    }
+154
+ 
+155
+    public void displayTheStack() {
+156
+ 
+157
+        int increment = 0;
+158
+ 
+159
+        for (int m = 0; m < 3; m++) {
+160
+ 
+161
+            increment += 10;
+162
+ 
+163
+            for (int n = 0; n < 71; n++)
+164
+                System.out.print("-");
+165
+ 
+166
+            System.out.println();
+167
+ 
+168
+            for (int n = increment - 10; n < increment; n++) {
+169
+ 
+170
+                System.out.format("| %3s " + " ", n);
+171
+ 
+172
+            }
+173
+ 
+174
+            System.out.println("|");
+175
+ 
+176
+            for (int n = 0; n < 71; n++)
+177
+                System.out.print("-");
+178
+ 
+179
+            System.out.println();
+180
+ 
+181
+            for (int n = increment - 10; n < increment; n++) {
+182
+ 
+183
+                if (theArray[n].equals("-1"))
+184
+                    System.out.print("|      ");
+185
+ 
+186
+                else
+187
+                    System.out
+188
+                            .print(String.format("| %3s " + " ", theArray[n]));
+189
+ 
+190
+            }
+191
+ 
+192
+            System.out.println("|");
+193
+ 
+194
+            for (int n = 0; n < 71; n++)
+195
+                System.out.print("-");
+196
+ 
+197
+            System.out.println();
+198
+ 
+199
+        }
+200
+ 
+201
+    }
+202
+ 
+203
+}
+
