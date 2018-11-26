@@ -11,16 +11,19 @@ public class hashCOntains{
 		Hashtable myHasT = new Hashtable(); 
 			
 		// enter name/myHashT pair 
-		myHasT.put("Edson", new Integer(345)); 
-		myHasT.put("Francisco", new Double(245.78)); 
-		myHasT.put("de", new Integer(790)); 
-		myHasT.put("Aguiar", new Double(365.98)); 
-		myHasT.put("Zandamela", new Integer(435)); 
+		myHasT.put("Edson", new Integer(100)); 
+		myHasT.put("Francisco", new Double(150)); 
+		myHasT.put("de", new Integer(80)); 
+		myHasT.put("Aguiar", new Double(120.88)); 
+		myHasT.put("Zandamela", new Integer(1000)); 
 			
 		
 		// check whether a value exists or not 
-		if (marks.contains(345)) 
-			System.out.println("value found in table"); 
+		if (myHasT.contains(1000)) 
+			System.out.println("Value found in table");
+		else{
+			System.out.println("Sorry!!! Your value was not found in the table");
+		}
 		
 	} 
 }

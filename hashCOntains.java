@@ -13,14 +13,17 @@ public class hashCOntains{
 		// enter name/myHashT pair 
 		myHasT.put("Edson", new Integer(100)); 
 		myHasT.put("Francisco", new Double(150)); 
-		myHasT.put("de", new Integer(80.88)); 
-		myHasT.put("Aguiar", new Double(120.0)); 
+		myHasT.put("de", new Integer(80)); 
+		myHasT.put("Aguiar", new Double(120.88)); 
 		myHasT.put("Zandamela", new Integer(1000)); 
 			
 		
 		// check whether a value exists or not 
-		if (marks.contains(1000)) 
-			System.out.println("Value found in table"); 
+		if (myHasT.contains(1000)) 
+			System.out.println("Value found in table");
+		else{
+			System.out.println("Sorry!!! Your value was not found in the table");
+		}
 		
 	} 
 }
