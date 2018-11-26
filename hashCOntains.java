@@ -2,6 +2,7 @@ import java.util.*;
 /*
  * @author: Edson Zandamale
  * This program implements the contains() method from a Hash table >> Checks weather or not avalue exists in the Hashtable
+ * Enumeration elements() :Returns an enumeration of the values obtained in hash table.
 */
 
 public class hashCOntains{ 
@@ -24,7 +25,13 @@ public class hashCOntains{
 		else{
 			System.out.println("Sorry!!! Your value was not found in the table");
 		}
-		
+		// create enumeration  
+   		Enumeration e = myHasT.elements(); 
+      
+		   System.out.println("-----Displaying Values in HashTable-----"); 
+		      
+		    while (e.hasMoreElements()) { 
+		   System.out.println("test " + e.nextElement());} 
 	} 
 }
 
