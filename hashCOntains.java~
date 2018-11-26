@@ -1,0 +1,27 @@
+import java.util.*; 	
+/*
+ * @author: Edson Zandamale
+ * This program implements the contains() method from a Hash table >> Checks weather or not avalue exists in the Hashtable
+*/
+
+public class hashCOntains{ 
+	public static void main(String[] arg) 
+	{ 
+		// creates a Hashtable
+		Hashtable myHasT = new Hashtable(); 
+			
+		// enter name/myHashT pair 
+		myHasT.put("Edson", new Integer(345)); 
+		myHasT.put("Francisco", new Double(245.78)); 
+		myHasT.put("de", new Integer(790)); 
+		myHasT.put("Aguiar", new Double(365.98)); 
+		myHasT.put("Zandamela", new Integer(435)); 
+			
+		
+		// check whether a value exists or not 
+		if (marks.contains(345)) 
+			System.out.println("value found in table"); 
+		
+	} 
+}
+
